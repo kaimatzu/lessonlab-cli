@@ -110,8 +110,8 @@ const dioxusCli = ['dioxus-cli', 'dx.exe'];
 
         // Configures the main.rs file
         const mainRs = fs.readFileSync(mainTarget, 'utf8');
-        const regexPattern = /dioxus_desktop::launch\(App\);/g;
-        const modifiedMainRs = mainRs.replace(regexPattern, 'dioxus_web::launch(App);');
+        const regexPattern = /dioxus_desktop::launch/g;
+        const modifiedMainRs = mainRs.replace(regexPattern, 'dioxus_web::launch');
 
         fs.writeFileSync(cargoTarget, modifiedCargoToml, 'utf8');
         fs.writeFileSync(mainTarget, modifiedMainRs, 'utf8');
@@ -133,7 +133,8 @@ const dioxusCli = ['dioxus-cli', 'dx.exe'];
             console.error(data);
         });
         
-    } else if (options.release) {
+    } 
+    if (options.release) {
         ll_logr.ll_info(`Running release build...`);
 
         const cargoToml = fs.readFileSync(cargoTarget, 'utf8');
@@ -155,8 +156,8 @@ const dioxusCli = ['dioxus-cli', 'dx.exe'];
 
         // Configures the main.rs file
         const mainRs = fs.readFileSync(mainTarget, 'utf8');
-        const regexPattern = /dioxus_web::launch\(App\);/g;
-        const modifiedMainRs = mainRs.replace(regexPattern, 'dioxus_desktop::launch(App);');
+        const regexPattern = /dioxus_web::launch/g;
+        const modifiedMainRs = mainRs.replace(regexPattern, 'dioxus_desktop::launch');
 
         fs.writeFileSync(cargoTarget, modifiedCargoToml, 'utf8');
         fs.writeFileSync(mainTarget, modifiedMainRs, 'utf8');
