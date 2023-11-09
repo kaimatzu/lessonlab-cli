@@ -1,6 +1,6 @@
 {
   "name": "lessonlab-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "LessonLab CLI Application",
   "main": "./bin/index.js",
   "bin": {
